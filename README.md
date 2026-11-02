@@ -35,20 +35,25 @@ The 80% threshold is the rule selected for this project. It is not presented as 
 
 A value below 0% or above 100% should be rejected as invalid.
 
-## Main Variables
-| Variable | Data type | Purpose |
-|---|---|---|
-| learnerName | STRING | Stores the learner's name |
-| attendance | INTEGER | Stores the monthly attendance percentage |
-| continueChecking | STRING | Stores whether the user wants to check another learner |
-| MIN_ATTENDANCE | INTEGER constant | Stores the minimum target of 80 |
-
 ## Functional Modules
-- **MainController:** Controls the overall sequence of the program and repeats the process when required.
-- **GetLearnerData:** Collects the learner's name and attendance percentage.
-- **ValidateAttendance:** Checks that the entered percentage is within the valid range of 0 to 100.
-- **CheckAttendance:** Compares the attendance percentage with the 80% target.
-- **DisplayResult:** Displays the appropriate message to the user.
+- The Student Attendance Support System (SASS) is organised into five logical modules. Each module is responsible for a particular task within the program. In my Flowgorithm design, these tasks are performed inside one main function called `Main`, rather than being created as separate functions.
+
+### 1. Main Control Module
+**Purpose:** Controls the overall operation of the system. It displays the welcome message, declares the required variables, sets the minimum attendance threshold to 80%, starts the repetition process and displays the goodbye message when the user finishes.
+
+### 2. Input Module
+**Purpose:** Collects the information required from the user. It asks for the student's name and monthly attendance percentage. It also receives the user's response when asked whether another student's attendance should be checked.
+
+### 3. Validation Module
+**Purpose:** Checks whether the attendance percentage entered by the user is valid. The system accepts values from 0 to 100. If the user enters a value below 0 or above 100, an error message is displayed and the user is asked to enter the percentage again.
+
+### 4. Decision Module
+**Purpose:** Compares the student's valid attendance percentage with the minimum attendance threshold of 80%. If the attendance is below 80%, the system displays **"Needs attendance support"**. If the attendance is 80% or above, it displays **"Attendance is good"**.
+
+### 5. Output Module
+**Purpose:** Displays the information and results produced by the system. It shows the student's name, attendance percentage and attendance status. It also displays the welcome, invalid-input and goodbye messages where necessary.
+
+**Note:** These five modules describe the logical responsibilities of the program. They are not five separate programming functions; all operations are carried out within the original `Main` function.
 
 These are the logical modules used to organize the solution. They should correspond to the actual functions or processes shown in the submitted design.
 
