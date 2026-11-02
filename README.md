@@ -74,7 +74,15 @@ Digital Public Goods are resources that meet the relevant Digital Public Goods S
 ## Tools
 - Flowgorithm: for designing and testing the algorithm and flowchart.
 - GitHub: for storing and sharing the project files.
+## Conclusion
 
+The Student Attendance Support System (SASS) was developed to demonstrate how programming logic can be used to address student attendance challenges. The system collects student information, validates attendance percentages, and compares each student's attendance against the minimum threshold of 80%.
+
+Students with attendance below 80% are identified as needing attendance support, while those with attendance of 80% or above are considered to have good attendance.
+
+Through this project, I gained practical experience in using input, validation, conditional statements, loops, pseudocode, and flowcharts to develop a logical solution to a real-world educational problem.
+
+Overall, this project demonstrates how a simple computer-based system can help identify students who may need additional attendance support.
 ## Suggested Repository Contents
 - `README.md` — project description and instructions.
 -Pseudcode.
