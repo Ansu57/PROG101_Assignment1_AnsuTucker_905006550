@@ -1,9 +1,9 @@
 # Student Attendance Support System (SASS)
 
 ## Project Overview
-The Student Attendance Support System (SASS) is a simple program designed to help identify learners whose monthly attendance is below the project's minimum attendance target of 80%.
+The Student Attendance Support System (SASS) is a simple program designed to help identify student whose monthly attendance is below the project's minimum attendance target of 80%.
 
-The program asks for a learner's name and monthly attendance percentage. It then checks the percentage and displays an appropriate message. The user can repeat the process for another learner.
+The program asks for a student's name and monthly attendance percentage. It then checks the percentage and displays an appropriate message. The user can repeat the process for another learner.
 
 ## Problem Being Addressed
 Low attendance can make it harder for Student to keep up with their studies. SASS provides a simple way to identify learners whose attendance may need attention so that support can be considered.
