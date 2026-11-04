@@ -1,110 +1,254 @@
 # Student Attendance Support System (SASS)
 
-## Project Overview
-The Student Attendance Support System (SASS) is a simple program designed to help identify student whose monthly attendance is below the project's minimum attendance target of 80%.
+## 1. Project Overview
 
-The program asks for a student's name and monthly attendance percentage. It then checks the percentage and displays an appropriate message. The user can repeat the process for another learner.
+The Student Attendance Support System (SASS) is a simple program developed to help teachers and school administrators monitor students' monthly attendance.
 
-## Problem Being Addressed
-Low attendance can make it harder for Student to keep up with their studies. SASS provides a simple way to identify learners whose attendance may need attention so that support can be considered.
+The system allows a user to enter a student's name and monthly attendance percentage. It then checks whether the attendance meets the selected minimum attendance threshold of 80%.
 
-This project is a basic demonstration. It does not connect to a school database or automatically contact learners.
+Students with attendance below 80% are identified as needing attendance support, while students with attendance of 80% or above are considered to have good attendance.
 
-## How the Program Works
+The program was developed using Flowgorithm as part of the PROG101 Programming Logic assignment.
+
+## 2. Author
+
+- **Name:** Ansu Tucker
+- **Student ID:** 905006550
+- **Course:** PROG101
+- **Institution:** Limkokwing University of Creative Technology, Sierra Leone
+
+## 3. Problem Statement
+
+Student absenteeism can negatively affect academic performance and learning progress. When schools do not monitor attendance regularly, students who frequently miss classes may not receive the support they need.
+
+The Student Attendance Support System provides a simple way to check monthly attendance and identify students whose attendance falls below a selected minimum threshold. This can help teachers recognise possible attendance concerns and take appropriate action.
+
+## 4. Project Objectives
+
+The main objectives of the Student Attendance Support System are to:
+
+- Check students' monthly attendance percentages.
+- Identify students whose attendance is below the 80% threshold.
+- Validate attendance entries to prevent invalid percentages.
+- Display clear attendance results.
+- Allow users to check multiple students during one program session.
+- Demonstrate the use of functions, modular programming, decisions, loops, and input validation.
+
+## 5. Scope of the Project
+
+The system focuses on checking one student's attendance at a time. The user enters the student's name and monthly attendance percentage. The program validates the percentage, compares it with the selected 80% threshold, and displays the student's attendance status.
+
+The program also allows the user to repeat the process to check another student without restarting the application.
+
+The system is designed as a basic attendance-checking program and does not replace a school's complete attendance management system.
+
+## 6. System Requirements
+
+The following are required to use the program:
+
+- A computer.
+- Flowgorithm installed on the computer.
+- The SASS Flowgorithm project file (`.fprg`).
+
+## 7. Variables and Constants
+
+The program uses the following variables and constant:
+
+| Variable/Constant | Data Type | Purpose |
+|---|---|---|
+| `name` | String | Stores the student's name. |
+| `attendance` | Integer | Stores the student's attendance percentage. |
+| `MinAttendance` | Integer | Stores the minimum attendance threshold of 80. |
+| `status` | String | Stores the student's attendance status. |
+| `continueChecking` | String | Stores the user's response about checking another student. |
+
+**Constant value:**
+
+`MinAttendance = 80`
+
+The 80% threshold is a design choice for this academic project.
+
+## 8. Functional Modules
+
+The program is divided into three functions to make the solution modular and easier to understand.
+
+### 8.1 Main Function
+
+The `Main` function controls the overall execution of the program. It:
+
+- Requests the student's name.
+- Calls `GetValidAttendance()` to obtain a valid attendance percentage.
+- Calls `GetAttendanceStatus()` to determine the student's attendance status.
+- Displays the student's name, attendance percentage, and status.
+- Asks the user whether they want to check another student.
+- Repeats the process when the user enters YES and ends when the user enters NO.
+
+### 8.2 GetValidAttendance Function
+
+The `GetValidAttendance()` function is responsible for collecting and validating the attendance percentage.
+
+It checks that the entered attendance is between 0 and 100. If the user enters a value below 0 or above 100, the program displays an invalid-entry message and requests another value.
+
+Once a valid percentage is entered, the function returns the attendance value to the `Main` function.
+
+**Return type:** Integer
+
+### 8.3 GetAttendanceStatus Function
+
+The `GetAttendanceStatus()` function compares the student's attendance percentage with the minimum attendance threshold.
+
+- If attendance is below 80%, it returns **"Needs attendance support"**.
+- If attendance is 80% or above, it returns **"Attendance is good"**.
+
+**Return type:** String
+
+**Parameters:**
+- `attendance` – Integer
+- `MinAttendance` – Integer
+
+## 9. Program Logic
+
+The program follows these steps:
+
 1. Start the program.
-2. Enter the student's name.
-3. Enter the student's monthly attendance percentage.
-4. Check that the percentage is between 0 and 100.
-5. If the percentage is below 80%, display **Needs attendance support**.
-6. If the percentage is 80% or above, display **Attendance is good**.
-7. Ask whether the user wants to check another student.
-8. If the answer is yes, repeat the process. Otherwise, end the program.
+2. Ask the user to enter the student's name.
+3. Request the student's attendance percentage.
+4. Validate the attendance percentage.
+5. If the percentage is outside the range of 0–100, request another entry.
+6. Compare the valid attendance percentage with the 80% threshold.
+7. Determine whether the student needs attendance support or has good attendance.
+8. Display the student's name, attendance percentage, and attendance status.
+9. Ask the user whether they want to check another student.
+10. If the user enters YES, repeat the process.
+11. If the user enters NO, end the program.
 
-## Attendance Rule
-- Below 80%: **Needs attendance support**
-- 80% or above: **Attendance is good**
+## 10. Expected Outputs and Test Scenarios
 
-The 80% threshold is the rule selected for this project. It is not presented as a universal or official attendance policy.
+The following examples demonstrate how the system is expected to respond to different inputs.
 
-## Example
-| Learner name | Monthly attendance | Result |
+| Student Name | Attendance | Expected Result |
 |---|---:|---|
-| Mariama | 65% | Needs attendance support |
-| Ibrahim | 80% | Attendance is good |
-| Abdul | 92% | Attendance is good |
+| John | 87% | Attendance is good |
+| Mary | 65% | Needs attendance support |
+| Peter | 80% | Attendance is good |
+| Sarah | 45% | Needs attendance support |
+| David | 100% | Attendance is good |
 
-A value below 0% or above 100% should be rejected as invalid.
+### Input Validation Tests
 
-## Functional Modules
-- The Student Attendance Support System (SASS) is organised into five logical modules. Each module is responsible for a particular task within the program. In my Flowgorithm design, these tasks are performed inside one main function called `Main`, rather than being created as separate functions.
+| Input | Expected Behaviour |
+|---|---|
+| 120 | Rejected because it is above 100. |
+| -5 | Rejected because it is below 0. |
+| 75 | Accepted as a valid attendance percentage. |
+| 0 | Accepted as a valid attendance percentage. |
+| 100 | Accepted as a valid attendance percentage. |
 
-### 1. Main Control Module
-**Purpose:** Controls the overall operation of the system. It displays the welcome message, declares the required variables, sets the minimum attendance threshold to 80%, starts the repetition process and displays the goodbye message when the user finishes.
+### Repeat and Exit Tests
 
-### 2. Input Module
-**Purpose:** Collects the information required from the user. It asks for the student's name and monthly attendance percentage. It also receives the user's response when asked whether another student's attendance should be checked.
+| User Response | Expected Behaviour |
+|---|---|
+| YES | The program checks another student. |
+| yes | The program checks another student. |
+| NO | The program ends. |
+| no | The program ends. |
+| Maybe | The program displays an invalid-response message and requests another response. |
 
-### 3. Validation Module
-**Purpose:** Checks whether the attendance percentage entered by the user is valid. The system accepts values from 0 to 100. If the user enters a value below 0 or above 100, an error message is displayed and the user is asked to enter the percentage again.
+The program accepts the uppercase and lowercase forms shown above. Other mixed-case forms are not included in the current validation rules.
 
-### 4. Decision Module
-**Purpose:** Compares the student's valid attendance percentage with the minimum attendance threshold of 80%. If the attendance is below 80%, the system displays **"Needs attendance support"**. If the attendance is 80% or above, it displays **"Attendance is good"**.
+## 11. Validation Rules
 
-### 5. Output Module
-**Purpose:** Displays the information and results produced by the system. It shows the student's name, attendance percentage and attendance status. It also displays the welcome, invalid-input and goodbye messages where necessary.
+The system uses validation to improve the accuracy of the information entered.
 
-**Note:** These five modules describe the logical responsibilities of the program. They are not five separate programming functions; all operations are carried out within the original `Main` function.
+**Attendance validation:**
+- Attendance must not be less than 0.
+- Attendance must not be greater than 100.
+- Invalid attendance values are rejected.
+- The user is asked to enter the attendance percentage again until a valid value is provided.
 
-These are the logical modules used to organize the solution. They should correspond to the actual functions or processes shown in the submitted design.
+**Repeat response validation:**
+- YES or yes allows the user to check another student.
+- NO or no ends the program.
+- Any other response is treated as invalid and the user is asked again.
 
-## Computational Thinking
-- **Decomposition:** The problem is divided into smaller tasks such as collecting input, validating data, checking attendance, and displaying a result.
-- **Pattern recognition:** The same attendance-checking steps are repeated for each learner.
-- **Abstraction:** The program focuses on the learner's name and monthly attendance percentage.
-- **Algorithm design:** The steps are arranged in a clear order, with decisions and repetition.
+## 12. How to Run the Program
 
-## Sustainable Development Goal
-The project relates to **United Nations Sustainable Development Goal 4: Quality Education**. Identifying learners who may need attendance support can contribute to efforts to help learners participate in education.
+1. Download or locate the SASS Flowgorithm project file from the repository.
+2. Open Flowgorithm on your computer.
+3. Open the SASS `.fprg` file.
+4. Review the flowchart if necessary.
+5. Click the Run button to execute the program.
+6. Enter the student's name when requested.
+7. Enter the student's attendance percentage.
+8. Follow the displayed instructions.
+9. Enter YES to check another student or NO to end the program.
 
-## Open-Source Software and Digital Public Goods
-This project can be shared publicly so that others can inspect, learn from, and improve its design. A project being publicly available does not automatically make it open-source; an appropriate open-source licence must be selected and included.
+## 13. Repository Structure
 
-Digital Public Goods are resources that meet the relevant Digital Public Goods Standard. This student project discusses the idea of accessible digital resources but should not be described as an officially recognized Digital Public Good.
+The repository contains the project documentation and supporting assignment files.
 
-## Tools
-- Flowgorithm: for designing and testing the algorithm and flowchart.
-- GitHub: for storing and sharing the project files.
-## Conclusion
+The expected organisation is:
 
-The Student Attendance Support System (SASS) was developed to demonstrate how programming logic can be used to address student attendance challenges. The system collects student information, validates attendance percentages, and compares each student's attendance against the minimum threshold of 80%.
+```text
+PROG101_Assignment1_AnsuTucker_905006550/
+│
+├── README.md
+├── Report(4).docx
+├── Pseudocode.txt
+├── SASS_Flowchart.png
+└── SASS.fprg
+```
 
-Students with attendance below 80% are identified as needing attendance support, while those with attendance of 80% or above are considered to have good attendance.
+**Note:** The filenames and folders shown above are an example. They should be adjusted to match the actual files uploaded to the GitHub repository.
 
-Through this project, I gained practical experience in using input, validation, conditional statements, loops, pseudocode, and flowcharts to develop a logical solution to a real-world educational problem.
+## 14. Connection to Sustainable Development Goal 4
 
-Overall, this project demonstrates how a simple computer-based system can help identify students who may need additional attendance support.
-## Suggested Repository Contents
-- `README.md` — project description and instructions.
--Pseudcode.
-- Flowchart image or PDF — exported diagram, if required.
-- Assignment report — final report, if permitted by the course instructions.
+The Student Attendance Support System relates to **United Nations Sustainable Development Goal 4 (Quality Education)**.
 
-## Scope and Limitations
-- The program uses a manually entered learner name and attendance percentage.
-- It processes one learner at a time.
-- It does not store records permanently.
-- It does not use a school database, calculate attendance from daily registers, or send notifications.
-- The attendance threshold is fixed at 80% for this project.
+SDG 4 focuses on ensuring inclusive and equitable quality education and promoting lifelong learning opportunities for all.
 
-## Author
-- Student name: Ansu Tucker
-- Student ID: 905006550
-- Course: PROG101
-- Institution: Limkokwing University of Creative Technology, Sierra Leone
+Regular attendance is important because students need opportunities to participate in lessons and learning activities. By identifying students whose attendance falls below the selected threshold, the system can help teachers recognise possible attendance concerns and consider appropriate support.
 
-## References
+The project therefore demonstrates how a simple digital solution can contribute to efforts that support educational participation.
 
-- United Nations. Sustainable Development Goal 4: Quality Education. https://sdgs.un.org/goals/goal4
-- Open Source Initiative. The Open Source Definition. https://opensource.org/osd
-- Digital Public Goods Alliance. Digital Public Goods Standard. https://digitalpublicgoods.net/standard/
+## 15. Open Source and Digital Public Goods
 
+This project is shared through GitHub to demonstrate the use of open-source development practices and version control.
+
+Making the project available in a repository allows other people to view its documentation, understand its logic, and learn from its design.
+
+The system is a small educational project that demonstrates how programming can be used to address a practical school-related problem. It is not claimed to be an officially recognised or certified Digital Public Good.
+
+## 16. Limitations and Privacy
+
+Although the Student Attendance Support System provides basic attendance checking, it has some limitations:
+
+- It checks one student's attendance at a time.
+- It does not permanently store student information or attendance records.
+- It does not connect to a school's official attendance database.
+- It does not automatically send notifications to students, parents, or teachers.
+- It does not generate monthly or yearly attendance reports.
+- The 80% minimum attendance threshold is a design choice for this academic project and is not presented as an official national attendance policy.
+
+The project uses sample information for demonstration. Real student personal information should not be uploaded to a public GitHub repository.
+
+## 17. Conclusion
+
+The Student Attendance Support System demonstrates how programming logic can be used to address a practical attendance-monitoring problem.
+
+Through the use of functions, input validation, decision structures, and loops, the program checks students' attendance percentages and identifies those who may need attendance support.
+
+The project also demonstrates the importance of modular programming, problem-solving, documentation, and version control when developing a simple software solution.
+## 17. References
+
+1. United Nations. (n.d.). *Goal 4: Ensure inclusive and equitable quality education and promote lifelong learning opportunities for all.*  
+   https://sdgs.un.org/goals/goal4
+
+2. Flowgorithm. (n.d.). *Flowgorithm – Flowchart programming language.*  
+   http://www.flowgorithm.org/
+
+3. GitHub. (n.d.). *GitHub documentation.*  
+   https://docs.github.com/
+
+4. United Nations Educational, Scientific and Cultural Organization (UNESCO). (n.d.). *Education.*  
+   https://www.unesco.org/en/education
