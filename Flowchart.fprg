@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Assignment"/>
+        <attribute name="authors" value="Ansu Tucker"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2026-11-04 08:45:51 AM"/>
+        <attribute name="created" value="QW5zdSBUdWNrZXI7REVTS1RPUC1FRDdHTU44OzIwMjYtMTEtMDM7MDQ6Mzc6MjkgUE07MzQwMg=="/>
+        <attribute name="edited" value="QW5zdSBUdWNrZXI7REVTS1RPUC1FRDdHTU44OzIwMjYtMTEtMDQ7MDg6NDU6NTEgQU07MTszNDk0"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="name" type="String" array="False" size=""/>
+            <declare name="continueChecking" type="String" array="False" size=""/>
+            <declare name="status" type="String" array="False" size=""/>
+            <declare name="attendance" type="Integer" array="False" size=""/>
+            <declare name="MinAttendance" type="Integer" array="False" size=""/>
+            <assign variable="MinAttendance" expression="80"/>
+            <assign variable="continueChecking" expression="&quot;YES&quot;"/>
+            <output expression="&quot;Welcome to Student Attendance Support System&quot;" newline="True"/>
+            <while expression="continueChecking=&quot;YES&quot; OR continueChecking=&quot;yes&quot;">
+                <output expression="&quot;Enter Student name&quot;" newline="True"/>
+                <input variable="name"/>
+                <assign variable="attendance" expression="GetValidAttendance()"/>
+                <assign variable="status" expression="GetAttendanceStatus(attendance, MinAttendance)"/>
+                <output expression="&quot;Student:&quot;&amp;name&amp;&quot; Attendance: &quot;&amp;attendance&amp;&quot;%&quot;" newline="True"/>
+                <output expression="&quot;Status:&quot; &amp; status" newline="True"/>
+                <output expression="&quot;Do you want to check another student?(YES/NO)&quot;" newline="True"/>
+                <input variable="continueChecking"/>
+                <while expression="continueChecking &lt;&gt; &quot;YES&quot; AND continueChecking&lt;&gt;&quot;yes&quot; AND  continueChecking &lt;&gt; &quot;NO&quot; AND continueChecking&lt;&gt;&quot;no&quot;">
+                    <output expression="&quot;Invalid Response. Please enter YES OR NO&quot;" newline="True"/>
+                    <input variable="continueChecking"/>
+                </while>
+            </while>
+            <output expression="&quot;Thankk you for using the system.Goodbye&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="GetAttendanceStatus" type="String" variable="status">
+        <parameters>
+            <parameter name="attendance" type="Integer" array="False"/>
+            <parameter name="MinAttendance" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="status" type="String" array="False" size=""/>
+            <if expression="attendance&lt;Minattendance">
+                <then>
+                    <assign variable="status" expression="&quot;Needs attendance support&quot;"/>
+                </then>
+                <else>
+                    <assign variable="status" expression="&quot;Attendance is good&quot;"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="GetValidAttendance" type="Integer" variable="attendance">
+        <parameters/>
+        <body>
+            <declare name="attendance" type="Integer" array="False" size=""/>
+            <output expression="&quot;Enter monthly attendance percentage(0-100)&quot;" newline="True"/>
+            <input variable="attendance"/>
+            <while expression="attendance&lt;0 OR attendance&gt;100">
+                <output expression="&quot;Invalid percentage.Enter a value from 0-100&quot;" newline="True"/>
+                <input variable="attendance"/>
+            </while>
+        </body>
+    </function>
+</flowgorithm>
